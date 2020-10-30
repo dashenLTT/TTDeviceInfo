@@ -16,6 +16,8 @@
 		A5408115254A9F5A0099A1DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5408114254A9F5A0099A1DB /* main.m */; };
 		A540811F254A9F5A0099A1DB /* TTDeviceInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A540811E254A9F5A0099A1DB /* TTDeviceInfoTests.m */; };
 		A540812A254A9F5A0099A1DB /* TTDeviceInfoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5408129254A9F5A0099A1DB /* TTDeviceInfoUITests.m */; };
+		A540813A254AA0AB0099A1DB /* TTDeviceInfoBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A5408139254AA0AB0099A1DB /* TTDeviceInfoBase.m */; };
+		A5408190254AD7CD0099A1DB /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A540818F254AD7CD0099A1DB /* KeychainWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,10 @@
 		A5408125254A9F5A0099A1DB /* TTDeviceInfoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTDeviceInfoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5408129254A9F5A0099A1DB /* TTDeviceInfoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTDeviceInfoUITests.m; sourceTree = "<group>"; };
 		A540812B254A9F5A0099A1DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5408138254AA0AB0099A1DB /* TTDeviceInfoBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTDeviceInfoBase.h; sourceTree = "<group>"; };
+		A5408139254AA0AB0099A1DB /* TTDeviceInfoBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTDeviceInfoBase.m; sourceTree = "<group>"; };
+		A540818E254AD7CD0099A1DB /* KeychainWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		A540818F254AD7CD0099A1DB /* KeychainWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,7 @@
 		A5408101254A9F590099A1DB /* TTDeviceInfo */ = {
 			isa = PBXGroup;
 			children = (
+				A5408137254A9FE20099A1DB /* TTDeviceInfoSDK */,
 				A5408102254A9F590099A1DB /* AppDelegate.h */,
 				A5408103254A9F590099A1DB /* AppDelegate.m */,
 				A5408105254A9F590099A1DB /* SceneDelegate.h */,
@@ -135,6 +142,17 @@
 				A540812B254A9F5A0099A1DB /* Info.plist */,
 			);
 			path = TTDeviceInfoUITests;
+			sourceTree = "<group>";
+		};
+		A5408137254A9FE20099A1DB /* TTDeviceInfoSDK */ = {
+			isa = PBXGroup;
+			children = (
+				A5408138254AA0AB0099A1DB /* TTDeviceInfoBase.h */,
+				A5408139254AA0AB0099A1DB /* TTDeviceInfoBase.m */,
+				A540818E254AD7CD0099A1DB /* KeychainWrapper.h */,
+				A540818F254AD7CD0099A1DB /* KeychainWrapper.m */,
+			);
+			path = TTDeviceInfoSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,9 +286,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A540810A254A9F590099A1DB /* ViewController.m in Sources */,
+				A5408190254AD7CD0099A1DB /* KeychainWrapper.m in Sources */,
 				A5408104254A9F590099A1DB /* AppDelegate.m in Sources */,
 				A5408115254A9F5A0099A1DB /* main.m in Sources */,
 				A5408107254A9F590099A1DB /* SceneDelegate.m in Sources */,
+				A540813A254AA0AB0099A1DB /* TTDeviceInfoBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -427,7 +447,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -439,13 +459,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TTDeviceInfo/TTDeviceInfo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RLB2S32Y3T;
+				DEVELOPMENT_TEAM = 9T6RU8B2WS;
 				INFOPLIST_FILE = TTDeviceInfo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = TT.com.TTDeviceInfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -456,13 +478,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TTDeviceInfo/TTDeviceInfo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RLB2S32Y3T;
+				DEVELOPMENT_TEAM = 9T6RU8B2WS;
 				INFOPLIST_FILE = TTDeviceInfo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = TT.com.TTDeviceInfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
